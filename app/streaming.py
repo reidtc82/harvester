@@ -28,7 +28,7 @@ class StreamClient(WebsocketClient):
         self.channels = ["ticker"]
         self.url = "wss://ws-feed.pro.coinbase.com"
         if self._starter:
-            os.system("clear")
+            # os.system("clear")
             print("------ Let's go! ------", end="\r")
             self._starter = False
             self._current_second = datetime.utcnow().replace(microsecond=0)
@@ -40,9 +40,10 @@ class StreamClient(WebsocketClient):
             # print(msg)
             base, quote = msg["product_id"].split("-")
             # print(base, quote)
-            self.graph[base][quote] = float(msg["price"])
-            self.graph[quote][base] = 1.0 / float(msg["price"])
-            time.sleep(1)
+            price = float(msg["price"])
+            self.graph[base][quote] = price
+            self.graph[quote][base] = 1.0 / price if price > 0.0 else 0.0
+            time.sleep(0.1)
 
         # msg_time = datetime.strptime(msg["time"], "%Y-%m-%dT%H:%M:%S.%fZ").replace(
         #     microsecond=0
