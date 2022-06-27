@@ -181,3 +181,4 @@ app.db-journal
 
 .flaskenv
 .c9/
+*.log

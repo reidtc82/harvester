@@ -54,7 +54,7 @@ if __name__ == "__main__":
     except Exception as e:
         print("error getting products", str(e))
 
-    exclusions = ["ETH", "EUR", "GBP", "BTCAUCTION", "USDT"]
+    exclusions = ["EUR", "GBP", "BTCAUCTION", "USDT"]
     invalid_products = [
         "BTCAUCTION-USD",
         "UST-USD",
@@ -64,6 +64,7 @@ if __name__ == "__main__":
         "UST-USDT",
         "WLUNA-USDT",
         "XRP-BTC",
+        "XYO-BTC",
     ]
     manager = Manager()
     graph = manager.dict()
